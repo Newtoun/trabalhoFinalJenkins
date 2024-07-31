@@ -10,9 +10,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t python:3.9-slim trabalhojenkins:latest'
+                script {
+                    sh 'docker build -t trabalhojenkins:latest .'
+                }
             }
-
         }
 
         stage('Run Tests') {
