@@ -1,0 +1,36 @@
+FROM jenkins/jenkins:lts
+
+
+USER root
+
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" && \
+    apt-get update && \
+    apt-get install -y docker-ce-cli && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN groupadd docker && usermod -aG docker jenkins
+
+# Voltar para o usuário Jenkins
+USER jenkins
+
+#(para montar a imagem)
+#docker build -t my-jenkins:latest . 
+
+# para rodar
+#docker run --name jenkins -p 8080:8080 -p 50000:50000 -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home my-jenkins:latest
+
+# entre no bash ()
+#docker exec -u root -it jenkins bash
+
+# de o comando 
+# chmod 666 /var/run/docker.sock
+
+
+#docker run --name jenkins-docker -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins-docker
