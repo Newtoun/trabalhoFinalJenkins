@@ -19,9 +19,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image('trabalhojenkins:latest').inside {
-                        sh 'python -m unittest discover'
-                    }
+                    sh 'docker run --rm trabalhojenkins:latest python -m unittest discover'
                 }
             }
         }
