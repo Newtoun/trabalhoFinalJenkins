@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('trabalhojenkins:latest')
+                    docker.build('python:3.9-slim')
                 }
             }
         }
