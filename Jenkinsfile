@@ -10,10 +10,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    def customImage = docker.build('trabalhojenkins:latest')
-                }
+                sh 'docker build -t python:3.9-slim trabalhojenkins:latest'
             }
+
         }
 
         stage('Run Tests') {
