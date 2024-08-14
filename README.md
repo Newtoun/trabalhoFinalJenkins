@@ -1,7 +1,1 @@
-teste 6
-fas
-fdssdada
-vtgefwvef
-lkjkl
-dsada
-bnfgnvgbcgcfnbd
+Teste automatizado de jenkins em scripts relacionado a temperatura
